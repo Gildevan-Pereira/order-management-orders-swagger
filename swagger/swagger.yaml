@@ -1,4 +1,4 @@
-openapi: "3.0.2"
+openapi: "3.0.0"
 
 info: 
   title: API de Ordens
@@ -11,6 +11,9 @@ servers:
 tags: 
   - name: Orders
     description: API de ordens
+  - name: History
+    description: API de ordens para consultar histórico
+
 
 paths:
   /orders:
@@ -37,7 +40,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponseDto1"
-    
     get:
       tags: 
         - Orders
@@ -178,7 +180,6 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/ErrorResponseDto3"
-
   /orders/{id}:
     get:
       tags: 
@@ -233,7 +234,6 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponseDto2"
             
-
 
 components:
   schemas:
@@ -304,17 +304,15 @@ components:
           description: Quantidade do ítem
           example: 2
 
-  # Response
-
     ErrorResponseDto1:
-      type: object
-      properties:
-        errors:
-          type: array
-          description: Lista de errors
-          items: 
-            $ref: '#/components/schemas/ErrorDto1'
-            
+        type: object
+        properties:
+          errors:
+            type: array
+            description: Lista de errors
+            items: 
+              $ref: '#/components/schemas/ErrorDto1'
+              
     ErrorDto1:
       type: object
       properties: 
@@ -326,7 +324,7 @@ components:
           type: string
           description: mensagem de erro
           example: 'Item name is null or invalid'
-          
+    
     ErrorResponseDto2:
       type: object
       properties:
@@ -487,7 +485,7 @@ components:
           type: array
           description: Items que compõe a ordem.
           items:
-            $ref: "#/components/schemas/OrderItemDto-response"       
+            $ref: "#/components/schemas/OrderItemDto-response"  
 
     OrderItemDto-response:
       type: object
