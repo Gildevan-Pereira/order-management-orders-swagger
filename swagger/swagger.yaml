@@ -1,4 +1,5 @@
-openapi: "3.1.0"
+openapi: "3.0.3"
+
 info: 
   title: API de Ordens
   description: Documentação da API de ordens do microsserviço order-management-order
@@ -385,7 +386,7 @@ components:
           description: Valor total da ordem
           example: 250.25
         status: 
-            type: [string]
+            type: string
             description: Status da ordem
             example: CREATED
         name:
@@ -421,7 +422,7 @@ components:
           type: array
           description: Items que compõe a ordem.
           items:
-            $ref: "#/components/schemas/OrderItemDto(response)"
+            $ref: "#/components/schemas/OrderItemDto-response"
 
     OrderHistoryResponseDto:
       type: object
@@ -486,9 +487,9 @@ components:
           type: array
           description: Items que compõe a ordem.
           items:
-            $ref: "#/components/schemas/OrderItemDto(response)"       
+            $ref: "#/components/schemas/OrderItemDto-response"       
 
-    OrderItemDto(response):
+    OrderItemDto-response:
       type: object
       properties:
         name:
