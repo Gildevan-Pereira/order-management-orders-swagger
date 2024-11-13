@@ -11,9 +11,6 @@ servers:
 tags: 
   - name: Orders
     description: API de ordens
-  - name: History
-    description: API de ordens para consultar histórico
-
 
 paths:
   /orders:
@@ -50,44 +47,44 @@ paths:
         - name: ids
           in: query
           required: false
-          description: "Lista de IDs para filtrar pedidos"
+          description: "Lista de IDs"
           schema:
             type: string
             example: "1,2,3"
         - name: startDate
           in: query
           required: false
-          description: "Data de início para filtrar pedidos"
+          description: "Data de início"
           schema:
             type: string
-            format: date-time
-            example: '2024-11-01T19:35:41.00'
+            format: date
+            example: '2024-11-01'
         - name: endDate
           in: query
           required: false
-          description: "Data de fim para filtrar pedidos"
+          description: "Data de fim"
           schema:
             type: string
-            format: date-time
-            example: '2024-11-02T19:35:41.00'
+            format: date
+            example: '2024-11-02'
         - name: minAmount
           in: query
           required: false
-          description: "Valor mínimo para filtrar pedidos"
+          description: "Valor mínimo"
           schema:
             type: number
             example: 250.25
         - name: maxAmount
           in: query
           required: false
-          description: "Valor máximo para filtrar pedidos"
+          description: "Valor máximo"
           schema:
             type: number
             example: 500.25
         - name: status
           in: query
           required: false
-          description: "Status para filtrar pedidos"
+          description: "Status"
           schema:
             type: array
             items:
@@ -96,28 +93,28 @@ paths:
         - name: name
           in: query
           required: false
-          description: "Nome para filtrar pedidos"
+          description: "Nome"
           schema:
             type: string
             example: "John Doe"
         - name: cpf
           in: query
           required: false
-          description: "CPF para filtrar pedidos"
+          description: "CPF"
           schema:
             type: string
             example: "12345678901"
         - name: city
           in: query
           required: false
-          description: "Cidade para filtrar pedidos"
+          description: "Cidade"
           schema:
             type: string
             example: "Limeiras"
         - name: state
           in: query
           required: false
-          description: "Estado para filtrar pedidos"
+          description: "Estado(UF)"
           schema:
             type: string
             example: "SP"
@@ -138,7 +135,7 @@ paths:
         - name: sort
           in: query
           required: false
-          description: "Critério de ordenação, no formato 'campo,asc' ou 'campo,desc'"
+          description: "Critério de ordenação, no formato 'campo.ASC' ou 'campo.DESC'"
           schema:
             type: string
             example: "ids.ASC"
@@ -206,10 +203,10 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponseDto2"
 
-  /orders/history/{id}:
+  /orders/{id}/history:
     get:
       tags: 
-        - History
+        - Orders
       summary: Endpoint de buscar histórico da ordem pelo order-id
       parameters:
         - name: id
